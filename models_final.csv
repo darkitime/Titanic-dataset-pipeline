@@ -1,0 +1,8 @@
+#,Group,Model,Hyperparameters,Val Accuracy Mean,Val Accuracy Std,Test Accuracy
+0,1,LogisticRegression,"C=1.0, l1_ratio=0, max_iter=500, penalty='l1', solver='saga'",0.8081,0.0103,0.933
+1,1,KNeighborsClassifier,"metric='minkowski', n_neighbors=7, weights='uniform'",0.8204,0.014,0.8541
+2,1,DecisionTreeClassifier,"criterion='entropy', max_depth=5, min_samples_leaf=2, min_samples_split=2, random_state=42",0.8339,0.0126,0.9163
+3,1,RandomForestClassifier,"criterion='entropy', max_depth=8, min_samples_leaf=1, min_samples_split=2, max_features='log2', n_estimators=300, random_state=42",0.8496,0.0115,0.8852
+4,0,CatBoostClassifier,"depth=5, iterations=200, l2_leaf_reg=10, learning_rate=0.1, subsample=0.9, random_seed=42",0.8474,0.0125,0.9043
+5,0,XGBClassifier,"colsample_bytree=0.7, gamma=0.01, learning_rate=0.05, max_depth=6, min_child_weight=0.5, n_estimators=100, reg_lambda=1, subsample=0.9, random_state=42",0.8586,0.0154,0.8732
+6,0,LGBMClassifier,"colsample_bytree=0.9, learning_rate=0.1, max_depth=5, n_estimators=100, num_leaves=15, reg_lambda=1, subsample=0.9, random_state=42",0.8507,0.0138,0.8708
