@@ -1,0 +1,21 @@
+,Group,Model,Test Accuracy
+0,1,"LogisticRegression(l1_ratio=0, max_iter=500, penalty='l1', solver='saga')",0.7727
+1,1,KNeighborsClassifier(n_neighbors=7),0.756
+2,1,"DecisionTreeClassifier(criterion='entropy', max_depth=5, min_samples_leaf=2,
+                       random_state=42)",0.7608
+3,1,"RandomForestClassifier(criterion='entropy', max_depth=8, max_features='log2',
+                       n_estimators=300, random_state=42)",0.7679
+4,0,"CatBoostClassifier(cat_features=['Sex', 'Embarked', 'Initial'], depth=5, iterations=200, l2_leaf_reg=10, learning_rate=0.1, random_seed=42, subsample=0.9, verbose=0)",0.7775
+5,0,"XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=0.7, device=None, early_stopping_rounds=None,
+              enable_categorical=True, eval_metric=None, feature_types=None,
+              feature_weights=None, gamma=0.01, grow_policy=None,
+              importance_type=None, interaction_constraints=None,
+              learning_rate=0.05, max_bin=None, max_cat_threshold=None,
+              max_cat_to_onehot=None, max_delta_step=None, max_depth=6,
+              max_leaves=None, min_child_weight=0.5, missing=nan,
+              monotone_constraints=None, multi_strategy=None, n_estimators=100,
+              n_jobs=None, num_parallel_tree=None, ...)",0.7656
+6,0,"LGBMClassifier(colsample_bytree=0.9, max_depth=5, num_leaves=15,
+               random_state=42, reg_lambda=1, subsample=0.9, verbose=-1)",0.7632
