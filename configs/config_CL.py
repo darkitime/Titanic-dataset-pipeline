@@ -105,8 +105,8 @@ _config_cl = {
     },
     'to_train': [
         'LogisticRegression',
-        'KNeighborsClassifier'
-        'DecisionTreeClassifier'
+        'KNeighborsClassifier',
+        'DecisionTreeClassifier',
         'RandomForestClassifier',
         'CatBoostClassifier',
         'XGBClassifier',

@@ -1,11 +1,13 @@
 from omegaconf import OmegaConf
+import torch.nn as nn
 
 _config_dnn = {
     'general': {
         'mode': 'train',  # 'train', 'inference'
         'experiment_name': 'tabular_mlp_v1',
         'seed': 42,
-        'device': 'cpu',  # 'cpu' or 'cuda'
+        'device': 'cpu',  # 'cpu' or 'cuda',
+        'verbose': False
     },
     'paths': {
         'train': 'data/train.csv',
@@ -19,8 +21,8 @@ _config_dnn = {
     'data': {
         'id_column': 'PassengerId',
         'target_column': 'Survived',
-        'cat_features': ['Sex', 'Embarked', 'Initial', 'Pclass'],
-        'num_features': ['Age', 'SibSp', 'Parch', 'Fare'],
+        'cat_features': ['Sex', 'Embarked', 'Initial'],
+        'num_features': ['Pclass', 'Age', 'SibSp', 'Parch', 'Fare'],
         'n_splits': 5,
         'val_size': 0.2,
         'batch_size': 32,
@@ -37,6 +39,8 @@ _config_dnn = {
             'dropout': 0.0,
             'use_batchnorm': False,
             'output_dim': 1,
+            'num_blocks': 2,
+            'activation_cls': 'LeakyReLU'
         }
     },
     'training': {
@@ -62,6 +66,12 @@ _config_dnn = {
             'factor': 0.1,
             'patience': 5
         }
+    },
+    'earlystopping':{
+        'mode': 'min',
+        'patience': 5,
+        'threshold': 1e-4,
+        'threshold_mode':'rel'
     },
     'loss': {
         'name': 'BCEWithLogitsLoss',

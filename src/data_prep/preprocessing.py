@@ -31,20 +31,24 @@ def clean(df, is_one_hot_encoding = False):
     data['Sex'] = (data['Sex'] == 'female').astype(int)
 
 
-    #One-hot-encoding
+    data = data.drop(['Name', 'Ticket', 'Cabin', 'PassengerId'], axis=1, errors='ignore')
+
+    # Encoding categories
     if is_one_hot_encoding:
         data = pd.get_dummies(data, columns=['Embarked', 'Initial'], drop_first=True, dtype=float)
     else:
         embarked_map = {'S': 0, 'C': 1, 'Q': 2}
         initial_map = {'Mr': 0, 'Mrs': 1, 'Miss': 2, 'Master': 3, 'Other': 4}
         
-        data['Embarked'] = data['Embarked'].map(embarked_map).fillna(0).astype(float)
-        data['Initial'] = data['Initial'].map(initial_map).fillna(4).astype(float)
-
-        cat_cols = ['Embarked', 'Initial']
-        num_cols = [c for c in data.columns if c not in cat_cols and c not in ['Name', 'Ticket', 'Cabin', 'PassengerId', 'Survived']]
-
-    data = data.drop(['Name', 'Ticket', 'Cabin', 'PassengerId'], axis=1, errors='ignore')
+        data['Embarked'] = data['Embarked'].map(embarked_map).fillna(0).astype(int)
+        data['Initial'] = data['Initial'].map(initial_map).fillna(4).astype(int)
+        
+        # Sorting columns for embedding
+        num_cols = ['Pclass', 'Age', 'SibSp', 'Parch', 'Fare']
+        cat_cols = ['Sex', 'Embarked', 'Initial']
+        target_col = ['Survived'] if 'Survived' in data.columns else []
+        
+        data = data[target_col + num_cols + cat_cols]
 
     return data
 
