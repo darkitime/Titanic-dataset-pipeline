@@ -1,5 +1,9 @@
-data/
 catboost_info/
 checkpoints/
+__pycache__/
+*.py[cod]
+*$py.class
+submissions/
+environment.yml
 
 

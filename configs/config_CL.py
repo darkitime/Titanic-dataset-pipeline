@@ -38,7 +38,6 @@ _config_cl = {
             'LogisticRegression': {
                 'C': 1.0,
                 'max_iter': 500,
-                'penalty': 'l1',
                 'solver': 'saga',
                 'random_state': '${general.seed}'
             },

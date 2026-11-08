@@ -80,7 +80,7 @@ def save_classic_checkpoints(results: Dict[str, Dict[str, Any]], weights_dir: st
         joblib.dump(res['models'], filepath)
 
 
-def save_dnn_checkpoints(models: List[torch.nn.Module], checkpoints_dir: str = config_DNN.paths.weights_dir) -> None:
+def save_dnn_checkpoints(models: List[torch.nn.Module], checkpoints_dir: str = config_DNN.paths.checkpoints_dir) -> None:
     """Saving state_dict for every DNN fold."""
     os.makedirs(checkpoints_dir, exist_ok=True)
     for fold_idx, model in enumerate(models):

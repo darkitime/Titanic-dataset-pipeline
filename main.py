@@ -21,11 +21,11 @@ def main():
     passenger_ids = test_df[config_CL.data.id_column].values
     y_test_true = pd.read_csv(config_CL.paths.targets)[config_CL.data.target_column].values
 
-    print(f"\n=== 2. Running Classic ML Pipeline ({config_CL.training.n_spits}-Fold OFF) ===")
+    print(f"\n=== 2. Running Classic ML Pipeline ({config_CL.training.n_splits}-Fold OFF) ===")
     all_results = run_cl()
     save_classic_checkpoints(all_results)
 
-    print(f"\n=== 3. Running Deep Learning Pipeline ({config_DNN.data.n_spits}-Fold OFF) ===")
+    print(f"\n=== 3. Running Deep Learning Pipeline ({config_DNN.data.n_splits}-Fold OFF) ===")
     dnn_res = run_dnn()
     all_results[config_DNN.model.name] = dnn_res
     save_dnn_checkpoints(dnn_res['models'])
@@ -46,8 +46,8 @@ def main():
             preds = model_preds,
             filename = f"submit_{i}_{model}.csv"
         )
-    print(f"\n Models are saved to {sub_path}")
+    print(f"\n Models are saved to {config_CL.paths.weights_dir}")
 
 
 if __name__ == '__main__':
-    main
+    main()
